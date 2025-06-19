@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🎬</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Video Ad Generator</title>
+    <meta name="description" content="Transform any product URL into compelling video advertisements using AI. Generate professional marketing videos in minutes with automated scraping, AI script generation, and video creation." />
+    <meta name="keywords" content="AI video generator, product videos, marketing automation, video ads, AI marketing" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="/" />
+    <meta property="og:title" content="AI Video Ad Generator" />
+    <meta property="og:description" content="Transform any product URL into compelling video advertisements using AI" />
+    <meta property="og:image" content="/og-image.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="/" />
+    <meta property="twitter:title" content="AI Video Ad Generator" />
+    <meta property="twitter:description" content="Transform any product URL into compelling video advertisements using AI" />
+    <meta property="twitter:image" content="/og-image.jpg" />
+
+    <!-- Preload fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Theme color -->
+    <meta name="theme-color" content="#7c3aed" />
+    
+    <style>
+        /* Loading screen styles */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        
+        .loading-content {
+            text-align: center;
+            color: white;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        /* Hide loading screen when React is ready */
+        .loaded #loading-screen {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        /* Prevent flash of unstyled content */
+        #root {
+            min-height: 100vh;
+        }
+        
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background: #0f0f23;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading screen -->
+    <div id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Loading AI Video Generator...</div>
+        </div>
+    </div>
+    
+    <!-- Main app container -->
+    <div id="root"></div>
+    
+    <!-- React app script -->
+    <script type="module" src="/src/main.jsx"></script>
+    
+    <script>
+        // Hide loading screen when React is ready
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.body.classList.add('loaded');
+                setTimeout(() => {
+                    const loadingScreen = document.getElementById('loading-screen');
+                    if (loadingScreen) {
+                        loadingScreen.remove();
+                    }
+                }, 500);
+            }, 100);
+        });
+        
+        // Basic error handling
+        window.addEventListener('error', (e) => {
+            console.error('Application Error:', e.error);
+        });
+        
+        // Unhandled promise rejection handling
+        window.addEventListener('unhandledrejection', (e) => {
+            console.error('Unhandled Promise Rejection:', e.reason);
+        });
+        
+        // Simple performance monitoring
+        window.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded at:', performance.now());
+        });
+    </script>
+</body>
+</html>
