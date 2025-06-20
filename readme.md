@@ -342,4 +342,4 @@ This project is licensed under the **MIT License**. See the `LICENSE` file for d
 
 ---
 
-Built with ❤️ in 24 hours for the **Chima Full Stack Challenge**
+
